@@ -23,7 +23,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='github-hooker',  # Required
-    version='0.1',  # Required
+    version='0.2',  # Required
     description='Simple github webhooks handler',  # Required
     long_description=long_description,  # Optional
     url='https://github.com/threatify/github-hooker',  # Optional
@@ -46,7 +46,7 @@ setup(
         'Programming Language :: Python :: 3.6'
     ],
     keywords='github webhooks python handler',  # Optional
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),  # Required
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'example']),  # Required
     # install_requires=['peppercorn'],  # Optional
     # extras_require={  # Optional
     #     'dev': ['check-manifest'],
@@ -62,12 +62,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'github_hooker=webhook_handler:main',
+            'github_hooker=github_hooker.webhook_handler:main',
         ],
-    },
-
-    project_urls={  # Optional
-        'Bug Reports': 'https://github.com/threatify/github-hooker/issues',
-        'Source': 'https://github.com/threatify/github-hooker',
     }
 )
