@@ -6,12 +6,8 @@ Handles incoming requests from github when webhooks are activated. Allows for pe
 easily on webhook events.
 """
 
-import subprocess
 import logging
 import os.path
-
-REPO_FOLDER = '/root/tf-frontend'
-WEBROOT = '/var/www/html'
 
 
 def get_configured_logger(name, filename):
