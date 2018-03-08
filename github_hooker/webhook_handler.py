@@ -18,7 +18,6 @@ config = {}
 @post('/<path:path>')
 def handle_repo_events(path):
 
-    print(path)
     if config['url_path'] != path:
         abort(404, "URL path not recognized")
 
@@ -45,9 +44,6 @@ def main(argv=sys.argv):  # pylint: disable=W0102
         help='Python module (.py file) contain functions to execute against github events')
 
     args = parser.parse_args()
-
-    print(args.config)
-    print(args.module)
 
     c = json.load(open(args.config, encoding='utf-8'))
     config['host'] = c['host']
