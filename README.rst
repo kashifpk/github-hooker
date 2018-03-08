@@ -16,7 +16,8 @@ Example:
 
 Config file needs to contain host, port and url_path parameters. See config.json under example folder.
 The module file should define functions for handling github events. Event handler functions accept a
-single parameter which is a `request <https://bottlepy.org/docs/dev/api.html#bottle.request>`_ object.
+single parameter which is a `request <https://bottlepy.org/docs/dev/api.html#the-request-object>`_
+object.
 
 Example of a function to handle repository pushed event:
 
