@@ -37,34 +37,6 @@ log = get_configured_logger(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), 'github_webhook.log'))
 
 
-def pull_code(repo_path):
-    log.info("Pulling latest code...")
-    try:
-        subprocess.run("cd /root/tf-frontend; git pull origin master", shell=True, check=True)
-    except subprocess.CalledProcessError as exp:
-        log.error("Error pulling updates, aborting :-(")
-        log.error(exp)
-        return False
-    else:
-        log.info("Done!")
-
-    return True
-
-
-def deploy_to_web(repo_path, web_path):
-    log.info("Copying to web root: %s", web_path)
-    try:
-        subprocess.run("cd {}/dist/; cp -r * {}/".format(repo_path, web_path), shell=True, check=True)
-    except subprocess.CalledProcessError as exp:
-        log.error("Error copying to web root, aborting :-(")
-        log.error(exp)
-        return False
-    else:
-        log.info("Done!")
-
-    return True
-
-
 def on_event_ping(request):
     log.info("Got ping event")
 
@@ -84,6 +56,3 @@ def on_event_push(request):
         log.info("  By: %s (%s)", hc['committer']['name'], hc['committer']['email'])
         log.info("  on: %s", hc['timestamp'])
         log.info("  %s", hc['message'])
-
-        pull_code(REPO_FOLDER)
-        deploy_to_web(REPO_FOLDER, WEBROOT)
