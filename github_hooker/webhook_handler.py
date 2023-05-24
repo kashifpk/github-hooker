@@ -10,7 +10,10 @@ import argparse
 import sys
 import json
 from codecs import open  # pylint: disable=W0622
+import bottle
 from .bottle import run, post, request, abort
+
+bottle.BaseRequest.MEMFILE_MAX = 1024000
 
 config = {}
 
